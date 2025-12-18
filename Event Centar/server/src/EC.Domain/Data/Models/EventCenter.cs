@@ -20,6 +20,8 @@ namespace EC.Domain.Data.Models
 
         public string KontaktTelefon { get; set; }
 
-        public DateTime sysDtCreated { get; set; }  
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
     }
 }

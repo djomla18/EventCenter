@@ -28,17 +28,17 @@ namespace EC.Domain.Data.Models
         public double Rotacija { get; set; }
 
         [ForeignKey(nameof(TemplateStola))]
-        public Guid IdTemplejtaStola { get; set; }
+        public Guid? IdTemplejtaStola { get; set; }
 
         [ForeignKey(nameof(Dogadjaj))]
         public Guid IdDogadjaja { get; set; }
 
-        public DateTime SysDtCreated { get; set; }
-
         public virtual Dogadjaj Dogadjaj { get; set; }
 
-        public virtual TemplateStola TemplateStola { get; set; }
+        public virtual TemplateStola? TemplateStola { get; set; }
 
+        public DateTime SysDtCreated { get; set; }
 
+        public DateTime SysDtUpdated { get; set; }
     }
 }

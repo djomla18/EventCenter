@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,8 +24,15 @@ namespace EC.Domain.Data.Models
         [ForeignKey(nameof(Stolica))]
         public Guid IdStolice { get; set; }
 
-        public virtual Gost Gost { get; set; } 
 
+        [DeleteBehavior(DeleteBehavior.Cascade)]
+        public virtual Gost Gost { get; set; }
+
+        [DeleteBehavior(DeleteBehavior.NoAction)]
         public virtual Stolica Stolica { get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
     }
 }

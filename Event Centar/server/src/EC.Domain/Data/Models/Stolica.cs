@@ -28,10 +28,14 @@ namespace EC.Domain.Data.Models
         public Guid IdStola { get; set; }
 
         [ForeignKey(nameof(TemplateStolice))]
-        public Guid IdTemplejtaStolice { get; set; }
+        public Guid? IdTemplejtaStolice { get; set; }
 
         public virtual Sto Sto { get; set; }
 
         public virtual TemplateStolice TemplateStolice { get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
     }
 }

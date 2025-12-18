@@ -1,3 +1,6 @@
+using EC.Infrastructure.DbContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +16,10 @@ builder.Services.AddSwaggerGen(opt => {
         Version = "v1",
     });
 });
+
+
+builder.Services.AddDbContext<EcDbContext>(opt =>
+                                           opt.UseSqlServer(builder.Configuration.GetSection("EC")["ConnectionString"]));
 
 var app = builder.Build();
 

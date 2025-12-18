@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,6 +16,8 @@ namespace EC.Domain.Data.Models
 
         public string Ime { get; set; }
 
+        public string InicijalSrednjegImena { get; set; }
+
         public string Prezime { get; set; }
 
         [ForeignKey(nameof(Dogadjaj))]
@@ -22,6 +25,13 @@ namespace EC.Domain.Data.Models
 
         public virtual Dogadjaj Dogadjaj { get; set; }
 
-        public DateTime sysDtCreated { get; set; }
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Ime} {InicijalSrednjegImena}. {Prezime}";
+        }
     }
 }

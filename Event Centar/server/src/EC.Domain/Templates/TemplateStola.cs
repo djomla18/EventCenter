@@ -2,6 +2,7 @@
 using EC.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace EC.Domain.Templates
 {
     public class TemplateStola
     {
+        [Key]
         public Guid IdTemplejtaStola { get; set; }
 
         public string BrojStola { get; set; }
@@ -29,5 +31,9 @@ namespace EC.Domain.Templates
         public Guid IdMape { get; set; }
 
         public virtual MapaSedenja MapaSedenja { get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
     }
 }

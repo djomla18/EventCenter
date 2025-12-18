@@ -21,10 +21,14 @@ namespace EC.Domain.Data.Models
         public Guid EventCenterID { get; set; }
 
         [ForeignKey(nameof(Dogadjaj))]
-        public Guid IdDogadjaja {  get; set; }  
+        public Guid? IdDogadjaja {  get; set; }  
 
-        public virtual Dogadjaj? Dogadjaj { get; set; }
+        public virtual Dogadjaj Dogadjaj { get; set; }
 
         public virtual EventCenter EventCentar{ get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
     }
 }

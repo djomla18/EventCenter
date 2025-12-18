@@ -22,9 +22,19 @@ namespace EC.Domain.Data.Models
 
         public EventStatus StatusDogadjaja { get; set; }
 
-        [ForeignKey(nameof(EventCenter))]
+        [ForeignKey(nameof(EventCentar))]
         public Guid EventCenterID { get; set; }
 
-        public virtual EventCenter EventCentar { get; set; }  
+        [ForeignKey(nameof(MapaSedenja))]
+        public Guid? IdMape { get; set; }
+
+        public virtual MapaSedenja MapaSedenja { get; set; }
+
+        public virtual EventCenter EventCentar { get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
+
     }
 }

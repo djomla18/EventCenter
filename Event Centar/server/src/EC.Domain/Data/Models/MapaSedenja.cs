@@ -13,15 +13,21 @@ namespace EC.Domain.Data.Models
         [Key]
         public Guid IdMape { get; set; }
 
+        public string NazivMape { get; set; }
+
+        public string Opis { get; set; }
+
         public string RasporedJSON{ get; set; }
 
-        public DateTime sysDtCreated { get; set; }
+        public int Kapacitet { get; set; }
 
+        [ForeignKey(nameof(EventCenter))]
+        public Guid EventCenterID { get; set; }
 
-        [ForeignKey(nameof(Dogadjaj))]
-        public Guid IdDogadjaja { get; set; }
+        public virtual EventCenter EventCenter { get; set; }
 
+        public DateTime SysDtCreated { get; set; }
 
-        public virtual Dogadjaj Dogadjaj { get; set; }
+        public DateTime SysDtUpdated { get; set; }
     }
 }

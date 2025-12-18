@@ -24,10 +24,14 @@ namespace EC.Domain.Templates
 
         public bool Zauzeta { get; set; }
 
-        [ForeignKey(nameof(Stolica))]
-        public Guid IdStolice { get; set; }
+        [ForeignKey(nameof(TemplateStola))]
+        public Guid IdTemplejtaStola { get; set; }
 
-        public virtual Stolica Stolica { get; set; }
+        public virtual TemplateStola TemplateStola { get; set; }
+
+        public DateTime SysDtCreated { get; set; }
+
+        public DateTime SysDtUpdated { get; set; }
 
     }
 }

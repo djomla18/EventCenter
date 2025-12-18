@@ -10,4 +10,8 @@
     <Folder Include="Interfaces\IRepository\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.22" />
+  </ItemGroup>
+
 </Project>
