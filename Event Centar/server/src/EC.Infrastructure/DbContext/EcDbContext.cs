@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace EC.Infrastructure.DbContext
 {
-    public class EcDbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class EcDbContext(DbContextOptions<EcDbContext> options) : Microsoft.EntityFrameworkCore.DbContext(options)
     {
-        public EcDbContext(DbContextOptions<EcDbContext> options) : base(options) { }  
-
-
         public virtual DbSet<Dogadjaj> Dogadjaji { get; set; }
 
         public virtual DbSet<EventCenter> EventCentri { get; set; }

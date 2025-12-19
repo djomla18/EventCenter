@@ -1,0 +1,89 @@
+﻿<Window x:Name="WelcomeView" x:Class="EC.ClientApp.ViewModels.DobrodosliView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EC.ClientApp.ViewModels"
+        mc:Ignorable="d"
+        Height="1080" Width="1920"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Background="#F5F5DC">
+    <!-- Main container -->
+    <Grid>
+        <!-- Center everything vertically and horizontally -->
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+
+            <!-- "DOBRODOŠLI U" text -->
+            <TextBlock Text="DOBRODOŠLI U"
+                       FontFamily="/Assets/Fonts/#Playfair Display"
+                       FontSize="42"
+                       FontWeight="Regular"
+                       Foreground="#1E3A5F"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- Event Center Icon (placeholder - we'll add real icon later) -->
+
+            <Border
+                Height="320"
+                Width="320">
+                <Image x:Name="Logo"
+                       Stretch="UniformToFill"/>
+
+                <Border.OpacityMask>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Border Background="Black"
+                                    CornerRadius="20"
+                                    Width="350"
+                                    Height="350"/>  
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.OpacityMask>
+            </Border>
+
+            <!-- "EVENT CENTAR" text -->
+            <TextBlock Text="EVENT"
+                       FontSize="50"
+                       FontFamily="/Assets/Fonts/#Playfair Display"
+                       FontWeight="Bold"
+                       Foreground="#1E3A5F"
+                       Margin="0,20,0,0"
+                       HorizontalAlignment="Center"
+                       />
+            <TextBlock Text="CENTAR"
+                       FontSize="50"
+                       Margin="0,0,0,50"
+                       FontFamily="/Assets/Fonts/#Playfair Display"
+                       FontWeight="Bold"
+                       Foreground="#1E3A5F"
+                       HorizontalAlignment="Center"
+                       FontStretch="Expanded"
+                       TextAlignment="Center" Width="286"/>
+
+            <!-- "MOJA REZERVACIJA" button -->
+            <Button Content="MOJA REZERVACIJA"
+                    FontSize="28"
+                    FontFamily="/Assets/Fonts/#Playfair Display"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Background="#1E3A5F"
+                    Padding="50,20"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="OnReservationButtonClick">
+
+                <!-- Button styling -->
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>
