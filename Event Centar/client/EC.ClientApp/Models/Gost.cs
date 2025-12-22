@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,10 +18,32 @@ namespace EC.ClientApp.Models
 
         public string Prezime { get; set; }
 
+        private bool _poupioRezervaciju { get; set; }
 
-        public override string ToString()
+        public bool PokupioRezervaciju
         {
-          return !string.IsNullOrEmpty(InicijalSrednjegImena) ? $"{Ime} {InicijalSrednjegImena}. {Prezime}" : $"{Ime} {Prezime}";
+            get => _poupioRezervaciju;
+            set 
+            {
+                if (_poupioRezervaciju != value)
+                {
+                    _poupioRezervaciju = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
         }
+
+        public string KompletnoImePrezimeGosta =>
+            !string.IsNullOrEmpty(InicijalSrednjegImena) ? $"{Ime} {InicijalSrednjegImena}. {Prezime}" : $"{Ime} {Prezime}";
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }
