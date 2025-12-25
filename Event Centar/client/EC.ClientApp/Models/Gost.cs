@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EC.ClientApp.Helpers.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace EC.ClientApp.Models
         public string InicijalSrednjegImena { get; set; }
 
         public string Prezime { get; set; }
+
+        public Pol Pol { get; set; }
 
         private bool _poupioRezervaciju { get; set; }
 
@@ -37,6 +40,11 @@ namespace EC.ClientApp.Models
 
         public string KompletnoImePrezimeGosta =>
             !string.IsNullOrEmpty(InicijalSrednjegImena) ? $"{Ime} {InicijalSrednjegImena}. {Prezime}" : $"{Ime} {Prezime}";
+
+        public int BrojStola { get; set; }
+
+        public int BrojStolice { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

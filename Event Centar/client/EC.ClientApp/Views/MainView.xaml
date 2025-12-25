@@ -10,7 +10,10 @@
         WindowState="Maximized"
         WindowStyle="None"
         Background="#F5F5DC">
-    <Grid x:Name="GlavniGrid">
+    <Grid x:Name="GlavniGrid" 
+          MouseDown="GlavniGrid_MouseDown"
+          Background="Transparent"
+          Focusable="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="209"/> <!-- search bar-->
             <RowDefinition Height="*"/> <!-- rezultati pretrage -->
@@ -32,11 +35,13 @@
                 <TextBox x:Name="SearchBox"
                          FontSize="36"
                          Padding="15"
-                         Height="76"
+                         Height="81"
                          BorderBrush="#D4CFC0"
                          BorderThickness="2"
                          Background="White"
-                         TextChanged="SearchBox_TextChanged">
+                         TextChanged="SearchBox_TextChanged"
+                         PreviewMouseDown="SearchBox_PreviewMouseDown"
+                         GotFocus="SearchBox_GotFocus">
 
                     <TextBox.Resources>
                         <Style TargetType="Border">
@@ -50,7 +55,8 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="1"
+        <Border x:Name="ResultBorder"
+                Grid.Row="1"
                 Margin="20,10,20,0"
                 Background="#FDFBF7"
                 CornerRadius="20">
@@ -105,7 +111,8 @@
                                        Margin="0,0,20,0"
                                        TextWrapping="Wrap"/>
 
-                                <CheckBox Grid.Column="1"
+                                <CheckBox x:Name="GostCB"
+                                          Grid.Column="1"
                                           IsChecked="{Binding PokupioRezervaciju, Mode=TwoWay}"
                                           VerticalAlignment="Center"
                                           VerticalContentAlignment="Center"
@@ -299,7 +306,8 @@
                             Orientation="Horizontal" 
                             HorizontalAlignment="Center"
                             Margin="0,5">
-                    <Button Content="⬆️" 
+                    <Button   x:Name="CapsLockBtn"
+                              Content="⬆️" 
                               Width="95" 
                               Height="70" 
                               Margin="2,0,10,0"
@@ -376,28 +384,44 @@
                                    ShadowDepth="0"/>
             </Border.Effect>
             <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                
+                
                 <!-- Map content will go here -->
-                <StackPanel VerticalAlignment="Center" 
-                             HorizontalAlignment="Center">
+                <Canvas 
+                        x:Name="MapaCanvas" 
+                        Grid.Row="0"
+                        Background="#FDFBF7"
+                        Margin="200,20,20,20">
+                        <!-- Tables and chairs will be drawn here programmatically -->
+                </Canvas>
 
-                    <!-- Placeholder map visualization -->
-                    <TextBlock Text="MAPA SEDENJA"
-                                FontFamily="/Assets/Fonts/#Playfair Display"
-                                FontSize="36"
-                                Foreground="#4A4A4A"
-                                HorizontalAlignment="Center"
-                                Margin="0,0,0,30"/>         
+                <ItemsControl x:Name="DobrodosliPoruka"
+                              Grid.Row="1"
+                              Margin="40,10,40,10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontFamily="/Assets/Fonts/#Playfair Display"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Foreground="#1E3A5F"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,5"
+                               Text="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-                    <!-- Selected guests display -->
-                    <TextBlock x:Name="PristigliGostiTextBox"
-                                FontSize="24"
-                                Foreground="#4A4A4A"
-                                HorizontalAlignment="Center"
-                                Margin="0,0,0,40"/>
-
-                    <!-- Potvrdi button -->
+                <!-- Potvrdi button -->
                     <Button
                         x:Name="PotvrdiBtn"
+                        Grid.Row="2"
                         Content="POTVRDI"
                         Width="250"
                         Height="70"
@@ -408,6 +432,7 @@
                         Foreground="White"
                         BorderThickness="0"
                         Cursor="Hand"
+                        Margin="0,10,0,20"
                         Click="ButtonPotvrdi_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -415,8 +440,6 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
-                </StackPanel>
             </Grid>
         </Border>
     </Grid>
